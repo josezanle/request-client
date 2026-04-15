@@ -3,7 +3,7 @@
 // Usage: <Relay />
 
 import { useState, useRef, useCallback } from "react";
-import styles from "./home.module.css";
+import styles from "./relay.module.css";
 
 // ── Constants ────────────────────────────────────────────────────────────
 const METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE"];
@@ -16,8 +16,8 @@ const METHOD_STYLES = {
   DELETE: { color: "var(--m-delete-color)", bg: "var(--m-delete-bg)", border: "var(--m-delete-border)" },
 };
 
-const BODY_TYPES = ["none", "form-data", "urlencoded", "raw · JSON", "binary"];
-const REQ_TABS   = ["Params", "Authorization", "Headers", "Body", "Scripts"];
+const BODY_TYPES = ["none", "form-data", "raw · JSON"];
+const REQ_TABS   = ["Params", "Authorization", "Headers", "Body"];
 const RES_TABS   = ["Body", "Headers", "Timeline"];
 
 const DEFAULT_TABS = [
@@ -430,38 +430,6 @@ export default function Relay() {
 
   return (
     <div className={styles.root}>
-
-      {/* ── TOPBAR ─────────────────────────────────────────── */}
-      <div className={styles.topbar}>
-        <div className={styles.logo}>
-          <div className={styles.logoMark}>R</div>
-          <span className={styles.logoName}>relay</span>
-        </div>
-
-        <div className={styles.tabStrip}>
-          {openTabs.map(tab => {
-            const tms = METHOD_STYLES[tab.method];
-            return (
-              <div
-                key={tab.id}
-                className={`${styles.requestTab} ${activeTabId === tab.id ? styles.activeTab : ""}`}
-                onClick={() => handleTabClick(tab)}
-              >
-                <div className={styles.tabDot} style={{ background: tms.color }} />
-                {tab.label}
-                <span
-                  className={styles.tabClose}
-                  onClick={e => handleCloseTab(e, tab.id)}
-                >×</span>
-              </div>
-            );
-          })}
-          <div className={styles.tabAdd} onClick={handleAddTab}>+</div>
-        </div>
-
-        <div className={styles.topbarSpacer} />
-        <div className={styles.envSelect}>ENV: local ▾</div>
-      </div>
 
       {/* ── REQUEST BAR ─────────────────────────────────────── */}
       <div className={styles.requestBar}>
