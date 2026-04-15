@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: showMe
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules   # evita que el volumen pise el node_modules del contenedor
+    environment:
+      - CHOKIDAR_USEPOLLING=true
