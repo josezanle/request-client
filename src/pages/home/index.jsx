@@ -775,11 +775,7 @@ export default function Relay() {
           {resTab === "Headers"  && <ResponseHeadersPanel responseData={response} />}
           {resTab === "Timeline" && <TimelinePanel />}
         </div>
-
       </div>
-
-
-
     </div>
   );
 }
